@@ -1,0 +1,81 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model EmployeeContactModel
+
+<div class="card bg-light">
+    <h2 class="card-header text-center">Employee Contact Details</h2>
+    <div class="card-body">
+        <div class="row w-100">
+            <div class="col-lg-6 text-capitalize">
+                <div class="mb-4">
+                    <h5>Home Telephone:</h5>
+                    <h5 class="text-muted">@Model.HomeTelephone</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Mobile:</h5>
+                    <h5 class="text-muted">@Model.Mobile</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Work Email:</h5>
+                    <h5 class="text-muted">@Model.WorkEmail</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Work Telephone:</h5>
+                    <h5 class="text-muted">@Model.WorkTelephone</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Phone:</h5>
+                    <h5 class="text-muted">@Model.Phone</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>ZipCode:</h5>
+                    <h5 class="text-muted">@Model.ZipCode</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Country:</h5>
+                    <h5 class="text-muted">@Model.Country</h5>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+
+                <div class="mb-4">
+                    <h5>Other Email:</h5>
+                    <h5 class="text-muted">@Model.OtherEmail</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Fax:</h5>
+                    <h5 class="text-muted">@Model.Fax</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Email:</h5>
+                    <h5 class="text-muted">@Model.Email</h5>
+                </div>
+              
+
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h5>Address:</h5>
+                    <h5 class="text-muted">@Model.Address</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>City:</h5>
+                    <h5 class="text-muted">@Model.City</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>State:</h5>
+                    <h5 class="text-muted">@Model.State</h5>
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr />
+        <a class="btn btn-outline-primary" asp-controller="Employee" asp-action="EditContact" asp-route-Id="@Model.Id">Edit</a>
+
+    </div>
+</div>

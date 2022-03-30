@@ -1,0 +1,65 @@
+﻿
+@model EmployeeMembershipModel
+
+@{
+    ViewData["Title"] = "Employee Membership | HeroHRM human resource manager";
+
+}
+<partial name="_employeePartial" />
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Add Employee Membership</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+                <strong>Congratulations</strong> You have added new Employee Membership successfully. <br />
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="MembershipId" class="form-label"></label>
+                                <select asp-for="MembershipId" class="form-control" asp-items="ViewBag.Membership">
+                                    <option value="">Please Choose Membership</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="MembershipId"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ReportingMethod" class="form-label"></label>
+                                <select asp-for="ReportingMethod" class="form-control" asp-items="ViewBag.ReportingMethod">
+                                    <option value="">Please Choose Pay Frequency</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="ReportingMethod"></span>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-6">
+                          
+                          
+
+                        </div>
+
+                    </div>
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="Employee" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

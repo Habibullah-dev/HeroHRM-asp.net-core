@@ -1,0 +1,371 @@
+﻿@model EmployeeModel
+@inject HeroHRM.Repository.IEmployeeContactRepository _employeeContact
+@inject HeroHRM.Repository.IEmployeeEducationRepository _employeeEducation
+@inject HeroHRM.Repository.IEmployeeDependantRepository _employeeDependant
+@inject HeroHRM.Repository.IEmployeeEmergencyRepository _employeeEmergency
+@inject HeroHRM.Repository.IEmployeeImmigrationRepository _employeeImmigration
+@inject HeroHRM.Repository.IEmployeeJobRepository _employeeJob
+@inject HeroHRM.Repository.IEmployeeSalaryRepository _employeeSalary
+@inject HeroHRM.Repository.IEmployeeMembershipRepository _employeeMembership
+@inject HeroHRM.Repository.IEmployeeSubordinateRepository _employeeSubordiante
+@inject HeroHRM.Repository.IEmployeeSupervisorRepository _employeeSupervisor
+@inject HeroHRM.Repository.IEmployeeWorkExperienceRepository _employeeExperience
+@inject HeroHRM.Repository.IEmployeeSkillRepository _employeeSkill
+@inject HeroHRM.Repository.IEmployeeLanguageRepository _employeeLanguage
+@inject HeroHRM.Repository.IEmployeeLicenseRepository _employeeLicense
+
+@{ 
+    var ContactModel = await _employeeContact.FindEmployeeContactByEmployeeId(Model.Id);
+    var EducationModel = await _employeeEducation.FindByEmployeeId(Model.Id);
+    var DepandantModels = await _employeeDependant.FindEmployeeDependantByEmployeeID(Model.Id);
+    var EmergencyModels = await _employeeEmergency.FindEmployeeEmergencyByEmployeeID(Model.Id);
+    var ImmigrationModel = await _employeeImmigration.FindByEmployeeId(Model.Id);
+    var JobModel = await _employeeJob.FindByEmployeeId(Model.Id);
+    var SalaryModel = await _employeeSalary.FindByEmployeeID(Model.Id);
+    var MembershipModel = await _employeeMembership.FindByEmployeeId(Model.Id);
+    var SubordinateModel = await _employeeSubordiante.FindEmployeeeID(Model.Id);
+    var SupervisorModel = await _employeeSupervisor.FindByEmployeeId(Model.Id);
+    var ExperienceModel = await _employeeExperience.FindByEmployeeID(Model.Id);
+    var SkillModel = await _employeeSkill.FindEmployeeSkill(Model.Id);
+    var LanguageModel = await _employeeLanguage.FindByEmployeeId(Model.Id);
+    var LicenseModel = await _employeeLicense.FindByEmployeeId(Model.Id);
+
+}
+
+<partial name="_employeePartial"/>
+<section class="container mt-3">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card bg-light" style="width: 18rem;">
+                <h5 class="card-header">@Model.FirstName @Model.LastName</h5>
+                <img src="@Model.Photograph" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <div class="d-flex align-items-start w-100">
+                        <div class="nav flex-column nav-pills w-100 me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <button class="nav-link mt-0 mb-0  active" id="v-pills-personal-tab" data-bs-toggle="pill" data-bs-target="#v-pills-personal" type="button" role="tab" aria-controls="v-pills-personal" aria-selected="true">Personal Details</button>
+
+                            <button class="nav-link" id="v-pills-contact-tab" data-bs-toggle="pill" data-bs-target="#v-pills-contact" type="button" role="tab" aria-controls="v-pills-contact" aria-selected="false">Contact Details</button>
+
+                            <button class="nav-link" id="v-pills-eduaction-tab" data-bs-toggle="pill" data-bs-target="#v-pills-eduaction" type="button" role="tab" aria-controls="v-pills-eduaction" aria-selected="false">Educations</button>
+
+                            <button class="nav-link" id="v-pills-dependant-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dependant" type="button" role="tab" aria-controls="v-pills-dependant" aria-selected="false">Dependents</button>
+
+                            <button class="nav-link" id="v-pills-emergency-tab" data-bs-toggle="pill" data-bs-target="#v-pills-emergency" type="button" role="tab" aria-controls="v-pills-emergency" aria-selected="false">Emergency Contact</button>
+
+                            <button class="nav-link" id="v-pills-immigration-tab" data-bs-toggle="pill" data-bs-target="#v-pills-immigration" type="button" role="tab" aria-controls="v-pills-immigration" aria-selected="false">Immigration</button>
+
+                            <button class="nav-link" id="v-pills-job-tab" data-bs-toggle="pill" data-bs-target="#v-pills-job" type="button" role="tab" aria-controls="v-pills-job" aria-selected="false">Job</button>
+
+                            <button class="nav-link" id="v-pills-salary-tab" data-bs-toggle="pill" data-bs-target="#v-pills-salary" type="button" role="tab" aria-controls="v-pills-salary" aria-selected="false">Salary</button>
+
+                            <button class="nav-link" id="v-pills-membership-tab" data-bs-toggle="pill" data-bs-target="#v-pills-membership" type="button" role="tab" aria-controls="v-pills-membership" aria-selected="false">Membership</button>
+
+                            <button class="nav-link" id="v-pills-subordinate-tab" data-bs-toggle="pill" data-bs-target="#v-pills-subordinate" type="button" role="tab" aria-controls="v-pills-subordinate" aria-selected="false">Subordinate</button>
+
+                            <button class="nav-link" id="v-pills-supervisor-tab" data-bs-toggle="pill" data-bs-target="#v-pills-supervisor" type="button" role="tab" aria-controls="v-pills-supervisor" aria-selected="false">Supervisor</button>
+                            <button class="nav-link" id="v-pills-experience-tab" data-bs-toggle="pill" data-bs-target="#v-pills-experience" type="button" role="tab" aria-controls="v-pills-experience" aria-selected="false">Work Experience</button>
+                            <button class="nav-link" id="v-pills-skill-tab" data-bs-toggle="pill" data-bs-target="#v-pills-skill" type="button" role="tab" aria-controls="v-pills-skill" aria-selected="false">Skill</button>
+                            <button class="nav-link" id="v-pills-language-tab" data-bs-toggle="pill" data-bs-target="#v-pills-language" type="button" role="tab" aria-controls="v-pills-language" aria-selected="false">Language</button>
+                            <button class="nav-link" id="v-pills-license-tab" data-bs-toggle="pill" data-bs-target="#v-pills-license" type="button" role="tab" aria-controls="v-pills-license" aria-selected="false">License</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="d-flex align-items-start ">
+
+                <div class="tab-content w-100" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+
+                        <partial name="_personal" model="@Model" />
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-contact" role="tabpanel" aria-labelledby="v-pills-contact-tab">
+                        @if (ContactModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Contact Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateContact" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Contact
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_contact" model="@ContactModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-eduaction" role="tabpanel" aria-labelledby="v-pills-eduaction-tab">
+                        @if (@EducationModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Education Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeEducation" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Eduaction
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_education" model="@EducationModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-dependant" role="tabpanel" aria-labelledby="v-pills-dependant-tab">
+                        @if (DepandantModels.Count < 1)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Depandant Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeDependant" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Depandant
+                                    </a>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            @foreach (var DepandantModel in DepandantModels)
+                            {
+                                <partial name="_dependant" model="@DepandantModel" />
+                            }
+
+                        }
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-emergency" role="tabpanel" aria-labelledby="v-pills-emergency-tab">
+                        @if (EmergencyModels.Count < 1)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Emergency Contact Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmergencyContact" asp-route-EmployeeId="@Model.Id">
+                                        Create Emergency Contact
+                                    </a>
+                                </div>
+                            </div>
+
+                        }
+                        else
+                        {
+
+                            @foreach (var EmergencyModel in EmergencyModels)
+                            {
+                                <partial name="_emergency" model="@EmergencyModel" />
+                            }
+
+                        }
+
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-immigration" role="tabpanel" aria-labelledby="v-pills-immigration-tab">
+                        @if (ImmigrationModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Immigration Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeImmigration" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Immigration
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_immigration" model="@ImmigrationModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-job" role="tabpanel" aria-labelledby="v-pills-job-tab">
+                        @if (JobModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Job Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeJob" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Job
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_job" model="@JobModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-salary" role="tabpanel" aria-labelledby="v-pills-salary-tab">
+                        @if (SalaryModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee salary Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeSalary" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Salary
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_salary" model="@SalaryModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-membership" role="tabpanel" aria-labelledby="v-pills-membership-tab">
+                        @if (MembershipModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Membership Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeMembership" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Membership
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_membership" model="@MembershipModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-subordinate" role="tabpanel" aria-labelledby="v-pills-subordinate-tab">
+                        @if (SubordinateModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Subordinate Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeSubordinate" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Subordinate
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_subordinate" model="@SubordinateModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-supervisor" role="tabpanel" aria-labelledby="v-pills-supervisor-tab">
+                        @if (SupervisorModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Supervisor Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeSupervisor" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Supervisor
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_supervisor" model="@SupervisorModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-experience" role="tabpanel" aria-labelledby="v-pills-experience-tab">
+                        @if (ExperienceModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Experience Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeExperience" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Experience
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_experience" model="@ExperienceModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-skill" role="tabpanel" aria-labelledby="v-pills-skill-tab">
+                        @if (SkillModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Skill Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeSkill" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Skill
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_skill" model="@SkillModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-language" role="tabpanel" aria-labelledby="v-pills-language-tab">
+                        @if (LanguageModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee Language Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeLanguage" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee Language
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_language" model="@LanguageModel" />
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-license" role="tabpanel" aria-labelledby="v-pills-license-tab">
+                        @if (LicenseModel == null)
+                        {
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <h3>No Employee License Found</h3>
+                                </div>
+                                <div class="card-body">
+                                    <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmployeeLicense" asp-route-EmployeeId="@Model.Id">
+                                        Create Employee License
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <partial name="_license" model="@LicenseModel" />
+                        }
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+  </div>
+</section>

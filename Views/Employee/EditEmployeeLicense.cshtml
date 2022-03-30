@@ -1,0 +1,76 @@
+﻿
+@model EmployeeLicenseModel
+
+@{
+    ViewData["Title"] = "Employee License HeroHRM human resource manager";
+
+}
+<partial name="_employeePartial" />
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Update Employee License</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+                <strong>Congratulations</strong> You have updated Employee License successfully. <br />
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="LicenseId" class="form-label"></label>
+                                <select asp-for="LicenseId" class="form-control" asp-items="ViewBag.License">
+                                    <option value="">Please Choose License</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="LicenseId"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="LicenseNumber" class="form-label"></label>
+                                <input asp-for="LicenseNumber" class="form-control">
+                                <span class="text-danger" asp-validation-for="LicenseNumber"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="IssuedDate" class="form-label"></label>
+                                <input asp-for="IssuedDate" class="form-control">
+                                <span class="text-danger" asp-validation-for="IssuedDate"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="ExpiryDate" class="form-label"></label>
+                                <input asp-for="ExpiryDate" class="form-control">
+                                <span class="text-danger" asp-validation-for="ExpiryDate"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="Comments" class="form-label"></label>
+                                <textarea asp-for="Comments" class="form-control"></textarea>
+                                <span class="text-danger" asp-validation-for="Comments"></span>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="Employee" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model EmployeeEmergencyModel
+
+<div class="card bg-light">
+    <h2 class="card-header text-center">Employee Emergency Details</h2>
+    <div class="card-body">
+        <div class="row w-100">
+            <div class="col-lg-6 text-capitalize">
+                <div class="mb-4">
+                    <h5>Home Telephone:</h5>
+                    <h5 class="text-muted">@Model.HomeTelephone</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Mobile:</h5>
+                    <h5 class="text-muted">@Model.Mobile</h5>
+                </div>
+
+       
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h5>Work Telephone:</h5>
+                    <h5 class="text-muted">@Model.WorkTelephone</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Name:</h5>
+                    <h5 class="text-muted">@Model.Name</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Relationship:</h5>
+                    <h5 class="text-muted">@Model.Relationship</h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <hr />
+        <a class="btn btn-outline-primary" asp-controller="Employee" asp-action="EditEmergencyContact" asp-route-Id="@Model.Id">Edit</a>
+        <a class="btn btn-success" asp-controller="Employee" asp-action="CreateEmergencyContact" asp-route-EmployeeId="@Model.EmployeeId" >Add</a>
+
+    </div>
+</div>

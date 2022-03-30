@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model EmployeeLanguageModel
+
+<div class="card bg-light">
+    <h2 class="card-header text-center">Employee Language Details</h2>
+    <div class="card-body">
+        <div class="row w-100">
+            <div class="col-lg-6 text-capitalize">
+                <div class="mb-4">
+                    <h5>Language:</h5>
+                    <h5>class="text-muted">@Model.Language</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Competency:</h5>
+                    <h5 class="text-muted">@Model.Competency</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Fluency:</h5>
+                    <h5 class="text-muted">@Model.Fluency</h5>
+                </div>
+              
+
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h5>Comment:</h5>
+                    <h5 class="text-muted">@Model.Comments</h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <a class="btn btn-outline-primary" asp-controller="Employee" asp-action="EditEmployeeLanguage" asp-route-Id="@Model.Id">Edit</a>
+
+    </div>
+</div>

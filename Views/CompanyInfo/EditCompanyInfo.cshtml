@@ -1,0 +1,105 @@
+﻿
+@model CompanyInfoModel
+@{
+    ViewData["Title"] = "Edit Company Info | HeroHRM human resource manager";
+
+    var Data = ViewBag.Data;
+
+
+}
+
+
+<partial name="_adminPartial" />
+
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Edit Company Info</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+    <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+        <strong>Congratulations</strong> You have Updated Company Info successfully. <br />
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post">
+                    <input type="hidden" value="@Data.Id" />
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input type="text" asp-for="Name" class="form-control" value="@Data.Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TaxId" class="form-label"></label>
+                        <input type="number" asp-for="TaxId" value="@Data.TaxId" class="form-control">
+                        <span class="text-danger" asp-validation-for="TaxId"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="EmployeeNumbers" class="form-label"></label>
+                        <input type="number" asp-for="EmployeeNumbers" value="@Data.EmployeeNumbers" class="form-control">
+                        <span class="text-danger" asp-validation-for="EmployeeNumbers"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="RegistrationNumber" class="form-label"></label>
+                        <input type="number" asp-for="RegistrationNumber" value="@Data.RegistrationNumber" class="form-control">
+                        <span class="text-danger" asp-validation-for="RegistrationNumber"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input type="number" asp-for="Phone" value="@Data.Phone" class="form-control">
+                        <span class="text-danger" asp-validation-for="Phone"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Fax" class="form-label"></label>
+                        <input type="number" asp-for="Fax" value="@Data.Fax" class="form-control">
+                        <span class="text-danger" asp-validation-for="Fax"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input type="text" asp-for="Email" value="@Data.Email" class="form-control">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Address" class="form-label"></label>
+                        <input type="text" asp-for="Address" value="@Data.Address" class="form-control">
+                        <span class="text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="City" class="form-label"></label>
+                        <input type="text" asp-for="City" value="@Data.City" class="form-control">
+                        <span class="text-danger" asp-validation-for="City"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="State" class="form-label"></label>
+                        <input type="text" asp-for="State" value="@Data.State" class="form-control">
+                        <span class="text-danger" asp-validation-for="State"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ZipCode" class="form-label"></label>
+                        <input type="number" asp-for="ZipCode" value="@Data.ZipCode" class="form-control">
+                        <span class="text-danger" asp-validation-for="ZipCode"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Country" class="form-label"></label>
+                        <input type="text" asp-for="Country" value="@Data.Country" class="form-control">
+                        <span class="text-danger" asp-validation-for="Country"></span>
+                    </div>
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="CompanyInfo" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

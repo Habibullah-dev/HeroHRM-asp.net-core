@@ -1,0 +1,85 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SiginInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+
+
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand text-primary" asp-area="" asp-controller="Home" asp-action="Index">HeroHRM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+                <ul class="navbar-nav flex-grow-1">
+
+                    @if (SiginInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-black" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black " asp-area="" asp-controller="User" asp-action="AllUsers">Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black " asp-area="" asp-controller="Employee" asp-action="Index">Employee</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-primary dropdown-toggle text-black" asp-controller="Leaves" asp-action="Index" id="leaves" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Leaves
+                            </a>
+                            <ul class="dropdown-menu bg-light" aria-labelledby="leaves">
+                                <li><a class="dropdown-item" asp-controller="Leaves" asp-action="Index">All Leaves</a></li>
+                                <li><a class="dropdown-item" asp-controller="Leaves" asp-action="CreateLeave">Add Leave</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-primary dropdown-toggle text-black" asp-controller="Holiday" asp-action="Index" id="holiday" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Holidays
+                            </a>
+                            <ul class="dropdown-menu bg-light" aria-labelledby="holiday">
+                                <li><a class="dropdown-item" asp-controller="Holiday" asp-action="Index">All Holiday</a></li>
+                                <li><a class="dropdown-item" asp-controller="Holiday" asp-action="CreateHoliday">Add Holiday</a></li>
+
+                            </ul>
+                        </li>
+
+
+
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-black " asp-area="" asp-controller="Info" asp-action="Index">My Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-black " asp-area="" asp-controller="Info" asp-action="Resign">Resign</a>
+                        </li>
+
+                    }
+
+
+
+                </ul>
+
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="Index">  Welcome @User.Identity.Name</a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="me-2 nav-link text-primary btn btn-outline-danger" asp-area="" asp-controller="User" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

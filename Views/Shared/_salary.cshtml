@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model EmployeeSalaryModel
+@inject HeroHRM.Repository.IPayGradesRepository _payGrade
+@inject HeroHRM.Repository.ICurrencyRepository _currency
+
+@{
+    var payGradeModel = await _payGrade.FindPayGrade(Model.PayGradeId);
+    var currencyModel = await _currency.FindCurrency(Model.CuurencyId);
+}
+
+
+<div class="card bg-light">
+    <h2 class="card-header text-center">Salary Details</h2>
+    <div class="card-body">
+        <div class="row w-100">
+            <div class="col-lg-6 text-capitalize">
+                <div class="mb-4">
+                    <h5>Pay Grade:</h5>
+                    <h5 class="text-muted"></h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Pay Frequency:</h5>
+                    <h5 class="text-muted">@payGradeModel.Name</h5>
+                </div>
+
+
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h5>Currency:</h5>
+                    <h5 class="text-muted">@currencyModel.Name</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Amount:</h5>
+                    <h5 class="text-muted">@Model.Amount</h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <a class="btn btn-outline-primary" asp-controller="Employee" asp-action="EditEmployeeSalary" asp-route-Id="@Model.Id">Edit</a>
+
+    </div>
+</div>

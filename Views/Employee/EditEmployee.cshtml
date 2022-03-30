@@ -1,0 +1,89 @@
+﻿
+@model EmployeeModel
+
+@{
+    ViewData["Title"] = "Edit Personal Information | HeroHRM human resource manager";
+
+    var Data = ViewBag.Data;
+}
+<partial name="_employeePartial" />
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Edit Personal Information</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+            <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+                <strong>Congratulations</strong> You have Updated Personal Information successfully. <br />
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="hidden" value="@Data.Id" />
+                            <input type="hidden" asp-for="UserId" value="@Data.UserId"/>
+                            <div class="mb-3">
+                                <label asp-for="FirstName" class="form-label"></label>
+                                <input type="text" asp-for="FirstName" value="@Data.FirstName" class="form-control">
+                                <span class="text-danger" asp-validation-for="FirstName"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MiddleName" class="form-label"></label>
+                                <input type="text" asp-for="MiddleName" value="@Data.MiddleName" class="form-control">
+                                <span class="text-danger" asp-validation-for="MiddleName"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="LastName" class="form-label"></label>
+                                <input type="text" asp-for="LastName" value="@Data.LastName" class="form-control">
+                                <span class="text-danger" asp-validation-for="LastName"></span>
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label asp-for="Gender" class="form-label"></label>
+                                <input type="text" asp-for="Gender" value="@Data.Gender" class="form-control">
+                                <span class="text-danger" asp-validation-for="Gender"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="MaritalStatus" class="form-label"></label>
+                                <input type="text" asp-for="MaritalStatus" value="@Data.MaritalStatus" class="form-control">
+                                <span class="text-danger" asp-validation-for="MaritalStatus"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="DateOfBirth" class="form-label"></label>
+                                <input asp-for="DateOfBirth"  class="form-control">
+                                <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+                            </div>
+                            <div class="mb-3">
+                                <label asp-for="NationalityId" class="form-label"></label>
+                                <select asp-for="NationalityId" class="form-control" asp-items="@ViewBag.Nationality">
+                                    <option value="">Please Choose Your Nationality</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="NationalityId"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="Employee" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

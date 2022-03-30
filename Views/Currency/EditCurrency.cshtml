@@ -1,0 +1,49 @@
+﻿
+@model CurrencyModel
+@{
+    ViewData["Title"] = "Edit Currency | HeroHRM human resource manager";
+
+    var Data = ViewBag.Data;
+}
+<partial name="_adminPartial" />
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Edit Currency</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+    <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+        <strong>Congratulations</strong> You have Updated Currency successfully. <br />
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post">
+                    <input type="hidden" value="@Data.Id" />
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input type="text" asp-for="Name" class="form-control" value="@Data.Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CurrencyCode" class="form-label"></label>
+                        <input type="text" asp-for="CurrencyCode" class="form-control" value="@Data.CurrencyCode">
+                        <span class="text-danger" asp-validation-for="CurrencyCode"></span>
+                    </div>
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="Currency" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

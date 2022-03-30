@@ -1,0 +1,55 @@
+﻿
+@model CompanyBranchModel
+@{
+    ViewData["Title"] = "Edit Company Branch | HeroHRM human resource manager";
+
+    var Data = ViewBag.Data;
+}
+<partial name="_adminPartial" />
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Edit Company Branch</h3>
+        </div>
+        @if (ViewBag.IsSuccess == true)
+        {
+    <div class="alert alert-success alert-dismissible fade show w-100 m-auto  my-1" role="alert">
+        <strong>Congratulations</strong> You have Updated Company Branch successfully. <br />
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        }
+        <div class="card-body bg-light p-3">
+            <div class="row g-3 align-items-center ">
+                <form method="post">
+                    <input type="hidden" value="@Data.Id" />
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input type="text" asp-for="Name" value="@Data.Name" class="form-control">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="City" class="form-label"></label>
+                        <input type="text" asp-for="City" value="@Data.City" class="form-control">
+                        <span class="text-danger" asp-validation-for="City"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Country" class="form-label"></label>
+                        <input type="text" asp-for="Country" value="@Data.Country" class="form-control">
+                        <span class="text-danger" asp-validation-for="Country"></span>
+                    </div>
+
+                    <hr />
+                    <button type="submit" class="btn btn-success btn-ld">Save</button>
+                    <a class="btn btn-outline-danger ms-3" asp-controller="CompanyBranch" asp-action="index">Cancel</a>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

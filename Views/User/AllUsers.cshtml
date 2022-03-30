@@ -1,0 +1,110 @@
+﻿@inject HeroHRM.Repository.IUserRepository _userRepository
+@{
+    ViewData["Title"] = "User management | HeroHRM human resource manager";
+    var employeeUsers = await _userRepository.EmployeeUsers();
+    var adminUsers = await _userRepository.AdminUsers();
+}
+
+<partial name="_adminPartial" />
+<section class="container mt-3">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>User Management</h3>
+        </div>
+        <div class="card-body">
+            <a class="btn btn-success" asp-controller="User" asp-action="AddAdmin">
+                Add Admin
+            </a>
+        </div>
+    </div>
+    <div>
+        @if (employeeUsers.Count() > 0)
+        {
+
+            <table class="table table-sm table-striped table-hover border">
+                <thead class="table-info">
+                    <tr>
+                        <th>
+                            <label>Id</label>
+                        </th>
+                        <th>
+                            <label>User Name</label>
+                        </th>
+                        <th>
+                            <label>Roles</label>
+                        </th>
+
+                    </tr>
+
+                </thead>
+                @foreach (var item in employeeUsers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.UserName)
+                        </td>
+                        <td>
+                            Employee Role
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+        }
+        else
+        {
+            <h3>No Information Found on Employee Role</h3>
+        }
+
+        @if (adminUsers.Count() > 0)
+        {
+
+            <table class="table table-sm table-striped table-hover border">
+                <thead class="table-info">
+                    <tr>
+                        <th>
+                            <label>Id</label>
+                        </th>
+                        <th>
+                            <label>User Name</label>
+                        </th>
+                        <th>
+                            <label>Roles</label>
+                        </th>
+
+                    </tr>
+
+                </thead>
+                @foreach (var item in adminUsers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.UserName)
+                        </td>
+                        <td>
+                            Admin Role
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+
+        }
+        else
+        {
+            <h3>No Information Found on Admin Role</h3>
+        }
+
+
+    </div>
+</section>
+

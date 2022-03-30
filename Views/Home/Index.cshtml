@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@inject HeroHRM.Repository.IEmployeeRepository _employeeRepo
+@inject HeroHRM.Repository.ILeaveRepository _leaveRepo
+@inject HeroHRM.Repository.IHolidayRepository _holidayRepo
+@inject HeroHRM.Repository.IUserRepository _userRepository
+
+@{
+    var Holidays = await _holidayRepo.GetHolidays();
+    var Leaves = await _leaveRepo.GetLeaves();
+
+    var employeeUsers = await _userRepository.EmployeeUsers();
+    var adminUsers = await _userRepository.AdminUsers();
+}
+
+<div class="Home-index">
+    <div class="row">
+        <div class="col-sm-3 employeeCard  ">
+            <div class="card">
+                <div class="card-body text-center border border-success shadow ">
+                    <span><i class="fas fa-users"></i></span>
+                    <h3 class="text-success">Employees</h3>
+                    <h1>@employeeUsers.Count</h1>
+                    <a class="text-muted" asp-controller="Employee" asp-action="Index">More details <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3 leaveCard">
+            <div class="card">
+                <div class="card-body text-center border border-info shadow">
+                    <span><i class="fas fa-sign-out-alt"></i></span>
+                    <h3 class="text-info">Leave</h3>
+                    <h1>@Leaves.Count</h1>
+                    <a class="text-muted" asp-controller="Leaves" asp-action="Index">More details <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-3 holidayCard">
+            <div class="card">
+                <div class="card-body text-center border border-primary shadow">
+                    <span><i class="fas fa-plane"></i></span>
+                    <h3 class="text-primary">Holiday</h3>
+                    <h1>@Holidays.Count</h1>
+                    <a class="text-muted" asp-controller="Holiday" asp-action="Index">More details <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-3 adminCard">
+            <div class="card">
+                <div class="card-body text-center border border-light shadow">
+                    <span><i class="fas fa-user"></i></span>
+                    <h3 class="text-secondary">Admin Users</h3>
+                    <h1>@adminUsers.Count</h1>
+                    <a class="text-muted" asp-controller="User" asp-action="AllUsers">More details <i class="fas fa-arrow-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

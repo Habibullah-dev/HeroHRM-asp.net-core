@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model EmployeeSkillModel
+
+<div class="card bg-light">
+    <h2 class="card-header text-center">Employee Skill Details</h2>
+    <div class="card-body">
+        <div class="row w-100">
+            <div class="col-lg-6 text-capitalize">
+                <div class="mb-4">
+                    <h5>Skill:</h5>
+                    <h5>class="text-muted">@Model.Skill</h5>
+                </div>
+                <div class="mb-4">
+                    <h5>Years of Experience:</h5>
+                    <h5 class="text-muted">@Model.YearOfExperience</h5>
+                </div>
+             
+
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-4">
+                    <h5>Comment:</h5>
+                    <h5 class="text-muted">@Model.Comments</h5>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <hr />
+
+        <a class="btn btn-outline-primary" asp-controller="Employee" asp-action="EditEmployeeSkill" asp-route-Id="@Model.Id">Edit</a>
+
+    </div>
+</div>
